@@ -1,0 +1,224 @@
+---
+title: "Social Inequality"
+subtitle: "Long-Term Trends and Their Relationships with Happiness, Homicide Rates and Life Expectancy"
+author: "Chengyu Wu, Tian Xu, Xinhui Liu, Yunzhen Jin"
+institute: "Dr.Sabine Hoffmann, Mona Niethammer, Lona Koers, Marie Scherzer"
+date: "2025-12-18"
+format:
+  revealjs:
+    title-slide: true
+    logo: "Results/LMU_Logo.svg"
+    css: customstyle.scss
+    embed-resources: true
+    slide-number: c/t
+editor: visual
+---
+```{r setup, include=FALSE}
+source("env_setup.R")
+```
+
+# Agenda
+
+::: incremental
+1.  Overview and Terminology
+
+2.  Research Questions
+
+    -   How has social inequality evolved over time?
+    -   How much do countries differ when it comes to social inequality?
+    -   What is the relationship between social inequality and other factors?
+
+3.  Summary and Limitations
+:::
+
+# Overview {.smaller}
+
+*Data Preparing*
+
+::: incremental
+-   **Data Cleaning**\
+
+    -   Do not interpolate missing data\
+    -   Use available data points\
+    -   Show real data
+
+-   **Data Filtering**
+
+    1.  **Time**\
+        Inequality over time (2000–2023)\
+        Differences across countries(2022)\
+        Inequality and its associated factors(2021)
+    2.  **Country**\
+
+-   **Weighting**
+:::
+
+# Terminology {.smaller .with-bottom1}
+
+::: incremental
+-   **Gini Coefficient**<sup class="src">1</sup>
+
+    -   Most widely used measure of income inequality\
+    -   Range: 0 = perfect equality, 1 = extreme inequality\
+
+-   **Before-tax Income**<sup class="src">1</sup>
+
+    -   Income received before taxes or government transfers\
+    -   Reflects market-based income distribution
+
+-   **After-tax Income**<sup class="src">1</sup>
+
+    -   Income after subtracting taxes and adding government transfers\
+    -   Indicates resources actually available to households
+:::
+
+::: bottom-note1
+Source:\[1\] World Bank Poverty and Inequality Platform
+:::
+
+# Agenda
+
+[1. Overview and Terminology]{style="color:lightgray;"}
+
+2.  Research Questions\
+
+    How has social inequality evolved over time?\
+    [How much do countries differ when it comes to social inequality?]{style="color:lightgray;"}\
+    [What is the relationship between social inequality and other factors?]{style="color:lightgray;"}
+
+[3. Summary and Limitations]{style="color:lightgray;"}
+
+# Global Trends
+
+```{r Contients,  fig.align='center', warning=FALSE, message=FALSE, echo=FALSE, out.width="100%", out.height="auto"}
+knitr::include_graphics("Results/Contients.svg")
+```
+
+# Agenda
+
+[1. Overview and Terminology]{style="color:lightgray;"}
+
+2.  Research Questions\
+
+    [How has social inequality evolved over time?]{style="color:lightgray;"}\
+    How much do countries differ when it comes to social inequality?\
+    [What is the relationship between social inequality and other factors?]{style="color:lightgray;"}
+
+[3. Summary and Limitations]{style="color:lightgray;"}
+
+# Countries Difference
+
+```{r Coutries, fig.align='center', warning=FALSE, message=FALSE, echo=FALSE, fig.width=7, fig.height=4}
+knitr::include_graphics("Results/Coutries.svg")
+```
+
+# Agenda
+
+[1. Overview and Terminology]{style="color:lightgray;"}
+
+2.  Research Questions\
+
+    [How has social inequality evolved over time?]{style="color:lightgray;"}\
+    [How much do countries differ when it comes to social inequality?]{style="color:lightgray;"}\
+    What is the relationship between social inequality and other factors?
+
+[3. Summary and Limitations]{style="color:lightgray;"}
+
+# Indicators {.indicators-slide}
+
+| Indicator | Concept | Unit |
+|--------------------|--------------------------------|--------------------|
+| Happiness | Self-reported life satisfaction | 0–10 scale |
+
+# Happiness
+
+```{r Happiness, fig.align='center', warning=FALSE, message=FALSE, echo=FALSE, fig.width=7, fig.height=4}
+knitr::include_graphics("Results/Happiness.svg")
+```
+
+# Indicators {.indicators-slide .with-bottom}
+
+| Indicator | Concept | Unit |
+|--------------------|--------------------------------|--------------------|
+| Happiness | Self-reported life satisfaction | 0–10 scale |
+| Homicide rate<sup class="src">1</sup> | Number of deaths from homicide per 100,000 people | rate per 100,000 |
+
+::: bottom-note
+Source:\[1\] WHO Mortality Database
+:::
+
+# Homicide Rate
+
+```{r Homicide, fig.align='center', warning=FALSE, message=FALSE, echo=FALSE, fig.width=7, fig.height=4}
+knitr::include_graphics("Results/Homicide.svg")
+```
+
+# Indicators {.indicators-slide}
+
+| Indicator | Concept | Unit |
+|--------------------|--------------------------------|--------------------|
+| Happiness | Self-reported life satisfaction| 0–10 scale |
+| Homicide rate | Number of deaths from homicide per 100,000 people | rate per 100,000 |
+| Life expectancy | average years that newborn is expected to live | year |
+
+# Life Expectancy
+
+```{r life ex, fig.align='center', warning=FALSE, message=FALSE, echo=FALSE, fig.width=7, fig.height=4}
+knitr::include_graphics("Results/life ex.svg")
+```
+
+# Agenda
+
+[1. Overview and Terminology]{style="color:lightgray;"}
+
+[2. Research Questions]{style="color:lightgray;"}\
+
+[How has social inequality evolved over time?]{style="color:lightgray;"}\
+[How much do countries differ when it comes to social inequality?]{style="color:lightgray;"}\
+[What is the relationship between social inequality and other factors?]{style="color:lightgray;"}\
+
+3.  Summary and Limitations
+
+# Summary
+
+:::: incremental
+::: smaller
+*Social Inequality*
+
+1.  **Global trend**
+    -   Downward trend
+    -   Consistently high level
+2.  **Cross-country difference**
+    -   Large difference across countries
+3.  **Higher Gini linked to:**
+    -   Lower happiness
+    -   Higher homicide rate
+    -   Lower life expectancy
+
+:::
+::::
+
+# Limitations
+
+::: incremental
+-   **Data Quality**
+
+    -   Data gaps\
+    -   Subjective indicators bias
+
+-   **Research Design**
+
+    -   Single measure inequality indicator\
+    -   Cross-sectional data
+:::
+
+# Reference
+
+```         
+- Joe Hasell (2023) - “Measuring inequality: what is the Gini coefficient?” Published online at OurWorldinData.org. Retrieved from: 'https://archive.ourworldindata.org/20251209-133038/what-is-the-gini-coefficient.html' [Online Resource] (archived on December 9, 2025).
+- Joe Hasell, Bertha Rohenkohl, Pablo Arriagada, Esteban Ortiz-Ospina, and Max Roser (2023) - “Economic Inequality” Published online at OurWorldinData.org. Retrieved from: 'https://ourworldindata.org/economic-inequality' [Online Resource]
+-Bastian Herre, Fiona Spooner, and Max Roser (2013) - “Homicides” Published online at OurWorldinData.org. Retrieved from: 'https://ourworldindata.org/homicides' [Online Resource]
+- Bastian Herre and Fiona Spooner (2023) - “Homicide data: how sources differ and when to use which one” Published online at OurWorldinData.org. Retrieved from: 'https://archive.ourworldindata.org/20251125-173858/homicide-data-how-sources-differ-and-when-to-use-which-one.html' [Online Resource] (archived on November 25, 2025)
+-Esteban Ortiz-Ospina and Max Roser (2017) - “Happiness and Life Satisfaction” Published online at OurWorldinData.org. Retrieved from: 'https://ourworldindata.org/happiness-and-life-satisfaction' [Online Resource]
+- Saloni Dattani, Lucas Rodés-Guirao, Hannah Ritchie, Esteban Ortiz-Ospina, and Max Roser (2023) - “Life Expectancy” Published online at OurWorldinData.org. Retrieved from: 'https://ourworldindata.org/life-expectancy' [Online Resource]
+```

@@ -1,0 +1,216 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.author {
+  text-align: right;
+}
+
+.reveal .title-slide h1,
+.reveal .slides .title-slide h1 {
+  font-size: 1.0em !important;
+  line-height: 1.15 !important;
+  margin-top: 0.2em !important;
+  margin-right: 4.0em !important;
+}
+
+.reveal .title-slide h2,
+.reveal .slides .title-slide h2 {
+  font-size: 1.0em !important;
+  margin-top: 0.2em !important;
+}
+
+.reveal section h1 {
+  font-size: 1.8em !important;
+}
+
+.reveal section h2 {
+  font-size: 1.0em !important;
+}
+
+
+.reveal .footer  {
+  font-size: 0.25em !important;
+  text-align: left !important;
+  display: block;
+  position: fixed;
+  left: 50px;
+  right: 90px;
+}
+
+.reveal .slides section .fragment.semi-fade-out {
+	opacity: 1;
+	visibility: inherit;
+
+	&.visible {
+		opacity: 0.25;
+		visibility: inherit;
+	}
+}
+
+.reveal .result {
+  max-height: 100%;
+}
+
+// Slide numbers to the bottom-right
+.slide-number, .reveal.has-logo .slide-number {
+  bottom: 14px !important;
+  left: 50px !important;
+  top: unset !important;
+  color: #777777 !important;
+}
+
+.reveal .slide-logo {
+  position: fixed !important;
+  top: 20px !important;
+  right: 40px !important;
+  height: 100px !important;
+  max-height: 500px !important;
+  width: auto !important;
+  z-index: 2000 !important;
+}
+
+.smaller {
+  font-size: 0.8em !important;
+  line-height: 1.2em !important;
+}
+
+.reveal .plot-container {
+  overflow: visible !important;
+}
+
+.lightgray {
+  color: lightgray !important;
+}
+
+
+.reveal .plot-container > div {
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.reveal .slides section:not(#title-slide) {
+  top: 0 !important;
+  transform: none !important;
+  text-align: left;
+}
+
+.reveal .slides section:not(#title-slide) h1,
+.reveal .slides section:not(#title-slide) h2 {
+  margin-top: 0.6em;
+  margin-bottom: 0.8em;
+}
+
+.reveal .slides section:not(#title-slide) > *:first-child {
+  margin-top: 0;
+}
+
+.reveal .slides section.title-slide {
+  top: unset !important;
+  transform: unset !important;
+}
+
+.reveal .slides section.indicators-slide{
+  top: 0 !important;
+  transform: none !important;
+  text-align: left;
+}
+
+.reveal .slides section.indicators-slide h2{
+  margin-top: 0.2em;
+  margin-bottom: 0.6em;
+  font-size: 1.25em;  
+}
+
+.reveal .slides section.indicators-slide table{
+  font-size: 0.85em;   
+  margin-top: 0.2em;    
+}
+
+.reveal .slides section.indicators-slide th,
+.reveal .slides section.indicators-slide td{
+  padding: 0.35em 0.6em;
+  line-height: 1.25;
+  vertical-align: top;
+}
+
+.reveal .slides section.indicators-slide th{
+  font-size: 0.95em;
+  font-weight: 600;
+}
+
+
+
+/* 上标更小一点 */
+.reveal sup.src {
+  font-size: 0.6em;
+  vertical-align: super;
+}
+
+/* 只要是 with-sources 页：来源固定到底部，并留空白 */
+.reveal .slides section.with-sources {
+  top: 0 !important;
+  transform: none !important;
+  text-align: left;
+}
+
+.reveal .slides section.with-sources .sources {
+  position: absolute;
+  left: 2.5em;
+  right: 2.5em;
+  bottom: 2.4em;     
+  font-size: 0.45em;
+  color: #666;
+  line-height: 1.35;
+}
+
+.reveal .slides section.with-bottom {
+  padding-bottom: 8cm;  
+}
+
+.reveal .slides section.with-bottom{
+  position: relative; 
+  top: 0 !important;
+  transform: none !important;
+}
+
+.reveal .slides section.with-bottom .bottom-note{
+  position: absolute;
+  bottom: 0.3cm;
+  left: 2.5em;
+  right: 2.5em;
+  font-size: 0.45em;
+  color: #666;
+  line-height: 1.35;
+}
+
+.reveal sup.src{
+  font-size: 0.6em;
+  vertical-align: super;
+}
+
+.reveal .slides section.with-bottom1 {
+  padding-bottom: 3cm;   
+}
+
+.reveal .slides section.with-bottom1{
+  position: relative;  
+  top: 0 !important;
+  transform: none !important;
+}
+
+.reveal .slides section.with-bottom1 .bottom-note1{
+  position: absolute;
+  bottom: 0.3cm;
+  left: 2.5em;
+  right: 2.5em;
+  font-size: 0.45em;
+  color: #666;
+  line-height: 1.35;
+}
+
+.reveal sup.src{
+  font-size: 0.6em;
+  vertical-align: super;
+}

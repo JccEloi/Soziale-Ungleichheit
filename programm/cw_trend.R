@@ -1,0 +1,29 @@
+### cw_trend_interactive.R ###
+### Global and Continental Inequality Trend ###
+
+p1.1.1 <- ggplot(region_before_2000_2023_w,
+                 aes(x = Year, y = Gini_beforetax, color = Country, group = Country)) +
+  geom_line(linewidth = 0.8) +
+  scale_color_manual(values = region_colors, name = "Region") +
+  labs(
+    title = "Global & Continental Inequality (2000-2023)",
+    x = "Year",
+    y = "Gini Coefficient (Before Tax)",
+    color = "Region"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "plain"),
+    legend.position = "right",
+    legend.justification = "top",
+    legend.box.just = "top",
+    legend.background = element_rect(fill = "transparent", color = NA),
+    legend.key.size = unit(1, "lines"),
+    legend.title = element_text(size = 14, face = "bold"),
+    legend.text = element_text(size = 13),
+    legend.spacing.y = unit(0.5, "lines"),
+    axis.title = element_text(size = 10),
+    axis.text = element_text(size = 11)
+  )
+
+p1.1.1

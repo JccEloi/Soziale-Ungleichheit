@@ -1,0 +1,117 @@
+# 你给的映射
+continent_map <- list(
+  "Europe (WID)"        = c("Denmark", "Germany", "Poland"),
+  "Asia (WID)"          = c("Singapore", "South Korea", "Indonesia", "China"),
+  "Africa (WID)"        = c("Algeria", "Egypt", "South Africa"),
+  "North America (WID)" = c("United States", "Canada"),
+  "Latin America (WID)" = c("Argentina", "Colombia", "Peru"),
+  "Oceania (WID)"       = c("New Zealand", "Australia")
+)
+
+# 修改后的数据框，添加线型信息
+gini_before_selected <- gini_before_selected %>%
+  mutate(linetype = case_when(
+    Country == "Germany" ~ "dashed",
+    Country == "South Korea" ~ "dashed",
+    Country == "Indonesia" ~ "dashed",
+    Country == "Egypt" ~ "dashed",
+    Country == "United States" ~ "dashed",
+    Country == "Colombia" ~ "dashed",
+    Country == "New Zealand" ~ "dashed",
+    TRUE ~ "solid"  # 默认其他国家为实线
+  ))
+
+# 1) 主图：你的原始 p1.2，但关掉 legend ---------------------------  
+p_main <- ggplot(gini_before_selected, aes(x = Year, y = Gini_beforetax, color = Country, linetype = linetype)) +
+  geom_line(linewidth = 0.9, alpha = 0.9) +
+  scale_color_manual(values = country_colors) +
+  scale_linetype_manual(values = c("solid" = "solid", "dashed" = "dashed")) +  # 确保映射正确
+  facet_wrap(~ Region, ncol = 3, scales = "fixed") +
+  labs(title = "Before-tax Gini coefficients by country and region(2000-2023)", 
+       x = "Year", 
+       y = "Gini Coefficient (Before Tax)", 
+       color = "Country", 
+       linetype = "Country") +
+  theme_minimal(base_size = 14) +
+  theme(plot.title = element_text(hjust = 0.5, face = "plain"),
+        axis.title = element_text(size = 14), 
+        axis.text = element_text(size = 12), 
+        strip.text = element_text(hjust = 0.5), 
+        legend.position = "none")
+
+## 2) 工具函数：根据一组国家名生成该组的 legend ------------------
+make_legend <- function(countries, data = gini_before_selected) {
+  
+  df_leg <- data %>%
+    filter(Country %in% countries) %>%
+    distinct(Country, linetype)
+  
+  color_values <- country_colors[df_leg$Country]
+  names(color_values) <- df_leg$Country
+  
+  # 添加一个非常明显的虚线样式
+  linetype_values <- df_leg$linetype
+  linetype_values <- ifelse(linetype_values == "dashed", "12", "solid")
+  names(linetype_values) <- df_leg$Country
+  
+  # 构造线段
+  df_plot <- data.frame(
+    x = rep(c(1, 2), nrow(df_leg)),
+    y = rep(1, 2 * nrow(df_leg)),
+    Country = rep(df_leg$Country, each = 2)
+  )
+  
+  p_legend <- ggplot(df_plot, aes(
+    x, y,
+    colour = Country,
+    linetype = Country
+  )) +
+    geom_line(linewidth = 1.2) +
+    scale_color_manual(values = color_values) +
+    scale_linetype_manual(values = linetype_values) +
+    guides(
+      colour = guide_legend(nrow = 1, byrow = TRUE),
+      linetype = guide_legend(nrow = 1, byrow = TRUE)
+    ) +
+    theme_void() +
+    theme(
+      legend.position = "bottom",
+      legend.title = element_blank(),
+      legend.text = element_text(size = 10),
+      legend.key.size = unit(1, "lines"),
+      legend.spacing.y = unit(0.1, "lines")
+    )
+  
+  cowplot::get_legend(p_legend)
+}
+
+
+## 3) 为六个大洲分别做 legend（按 continent_map） -------------------
+leg_europe  <- make_legend(continent_map[["Europe (WID)"]])
+leg_asia    <- make_legend(continent_map[["Asia (WID)"]])
+leg_africa  <- make_legend(continent_map[["Africa (WID)"]])
+leg_na      <- make_legend(continent_map[["North America (WID)"]])
+leg_latam   <- make_legend(continent_map[["Latin America (WID)"]])
+leg_oceania <- make_legend(continent_map[["Oceania (WID)"]])
+
+## 4) 把六个 legend 拼成 2 行 × 3 列 ------------------------------
+# 第一行：Europe | Asia | Africa
+# 第二行：North America | Latin America | Oceania
+legends_grid <- cowplot::plot_grid(
+  leg_europe, leg_asia, leg_africa,
+  leg_na,     leg_latam, leg_oceania,
+  ncol = 3,
+  align = "hv"
+)
+
+
+## 5) 主图 + legend 区域 合成最终 p1.2 ---------------------------
+p1.2 <- cowplot::plot_grid(
+  p_main,
+  legends_grid,
+  ncol = 1,
+  rel_heights = c(7.5, 2)   # 可以微调整体“图：图例”高度比例
+)
+
+p1.2
+cc
