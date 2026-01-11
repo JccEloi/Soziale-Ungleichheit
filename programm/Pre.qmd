@@ -93,7 +93,7 @@ Source:\[1\] World Bank Poverty and Inequality Platform
 # Global Trends
 
 ```{r Contients, fig.align='center', warning=FALSE, message=FALSE, echo=FALSE, out.width="100%", out.height="auto"}
-source("cw_trend_interactive.R")
+source("cw_trend.R")
 p1.1.1
 ```
 

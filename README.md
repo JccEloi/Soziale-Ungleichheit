@@ -1,7 +1,7 @@
 # Soziale-Ungleichheit
 **Author: ** Chengyu Wu, Tian Xu, Xinhui Liu, Yunzhen Jin
 
-## General Instruction
+## General Instruction 
 
 This is the repository for Soziale-Ungleichheit Project.
 To ensure the performance of our programs, please read this instruction before running the codes.
